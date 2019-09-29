@@ -1,33 +1,26 @@
 <template>
   <div class="">
-    {{fetchDatabases()}}
+    <ul id="example-1" style="list-style:none">
+      <li v-for="item in getDatabases" :key="item">
+        <span>{{ item.name }}</span><span style="margin-left:10px;">{{ item.docCount }}</span>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 
-import axios from 'axios'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'databases',
-  created() {
-    axios.get(`_all_dbs`)
-    .then(response => {
-      // JSON responses are automatically parsed.
-      this.posts = response.data
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
+  computed: {
+     ...mapGetters([
+      'getDatabases'
+    ])
   },
-  methods: {
-    fetchDatabases () {
-      return {
-        "testDB" : {
-          docCount: 2
-        }
-      }
-    }
+  created() {
+    this.$store.dispatch('fetchDatabases')
   }
 }
 </script>
