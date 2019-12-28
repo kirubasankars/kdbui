@@ -5,7 +5,7 @@
       <div class="toppanel">
         <router-view name="topBar" />
       </div>
-      <div class="contentpanel">
+      <div class="contentpanel" style="overflow:auto">
         <router-view />
       </div>
     </div>

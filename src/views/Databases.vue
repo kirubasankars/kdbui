@@ -1,26 +1,23 @@
 <template>
-  <div class="">
+  <div class>
     <ul id="example-1" style="list-style:none">
-      <li v-for="item in getDatabases" :key="item">
-        <span>{{ item.name }}</span><span style="margin-left:10px;">{{ item.docCount }}</span>
+      <li v-for="item in listDatabases" :key="item.name">
+        <router-link :to="{name:'all_docs', params:{db: item.db_name}}">{{ item.db_name }}</router-link>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'databases',
+  name: "databases",
   computed: {
-     ...mapGetters([
-      'getDatabases'
-    ])
+    ...mapGetters(["listDatabases"])
   },
   created() {
-    this.$store.dispatch('fetchDatabases')
+    this.$store.dispatch("fetchDatabases");
   }
-}
+};
 </script>
