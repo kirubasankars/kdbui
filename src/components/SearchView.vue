@@ -20,12 +20,17 @@ export default {
       line-height: 46px;                    
       flex: 2;                   
 
-      > input[type='text'] {                                                
+      > input[type='text'] {
           height: 30px;
           width: calc(100% - 20px);                        
           border: 0;
           border-bottom: #b3b3b3 solid 2px;
       }
+
+      > input[type='text']:focus {
+        outline: none;
+      }
+
   }
 
 </style>

@@ -27,7 +27,7 @@ html, body, #app {
     width: 100%;    
     height: 100%;
     position: relative;
-    color: white;
+    color: black;
     
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -40,6 +40,7 @@ html, body, #app {
         box-shadow: none;
         background: none;
         border: 0;
+        outline: 0;
     }
 
     button.btn-primary {
@@ -134,8 +135,7 @@ html, body, #app {
 
     > .controller {
 
-        > .toolbox {
-            height: 90px;
+        > .toolbox {            
             width: 100%;
             display: flex;           
             flex-direction: column;

@@ -32,7 +32,12 @@
 </template>
 
 <script>
+
 export default {
   name: "ListView",
+  created() {
+    console.log(this.$route.params)
+  }
 };
+
 </script>

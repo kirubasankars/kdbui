@@ -33,8 +33,7 @@ export default {
 
           > li {
               float: left;
-              padding-right: 10px;
-              text
+              padding-right: 10px;              
           
               > a, a:hover {
                   text-decoration: none;
@@ -49,7 +48,7 @@ export default {
           }                        
 
           > li:last-child {
-              color: grey;
+              color: #808080;
           }
       }
   }
