@@ -1,18 +1,21 @@
-const pathRewrite = {}
-const basePath = process.env.NODE_ENV === 'production' ? '^/' : '^/api';
+//const pathRewrite = {}
+//const basePath = process.env.NODE_ENV === 'production' ? '^/' : '^/api';
 
-pathRewrite[basePath] = '/'
+//pathRewrite[basePath] = '/'
+// process.env.NODE_ENV === 'production' ? '/' :
 
 module.exports = {
   pluginOptions: {
     proxy: {
       enabled: true,
-      context:  process.env.NODE_ENV === 'production' ? '/' : '/api',
+      context: '/api',
       
       options: {
-        target: 'http://127.0.0.1:8001/',
-        changeOrigin: true,
-        pathRewrite
+        target: 'http://127.0.0.1:8001',
+        changeOrigin: true,        
+        pathRewrite : {
+          '^/api': ''
+        }
       }
     }
   },
