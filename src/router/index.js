@@ -6,12 +6,17 @@ Vue.use(VueRouter)
 const routes = [
   {   
     path: '/', 
-    redirect: '/list/database'
+    redirect: '/list/databases'
   },
   {
     path: '/list/:model',
-    name: 'List',
-    component: () => import(/* webpackChunkName: "defaultviews" */ '../views/ListView.vue')
+    name: 'List1',
+    component: () => import(/* webpackChunkName: "views" */ '../views/ListView.vue')
+  },
+  {
+    path: '/list/:model/:id',
+    name: 'List2',
+    component: () => import(/* webpackChunkName: "views" */ '../views/ListView.vue')
   },
   {
     path: '/about',
@@ -19,7 +24,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "defaultviews" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "views" */ '../views/About.vue')
   }
 ]
 

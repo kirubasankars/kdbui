@@ -1,7 +1,8 @@
 <template>
  <nav class="breadcrumb">
    <ol>
-     <li>Databases</li>
+     <li v-for="item in breadcrumbParent" v-bind:key="item.title"><a v-on:click="linked(item)">{{item.title}}</a></li>
+     <li v-for="item in breadcrumbCurrent" v-bind:key="item.title">{{item.title}}</li>
    </ol>
  </nav>
 </template>
@@ -9,7 +10,26 @@
 <script>
 
 export default {
-  name: 'Breadcrumb'
+  
+  name: 'Breadcrumb',
+  
+  computed: {
+    breadcrumbParent() {
+      const bc = this.$store.state.breadcrumb      
+      return bc.slice(0, bc.length - 1);
+    },
+    breadcrumbCurrent() {
+      const bc = this.$store.state.breadcrumb      
+      return bc.slice(bc.length - 1, bc.length);
+    }
+  },
+
+  methods: {
+    linked(item) {
+      this.$router.push(item)
+    }
+  }
+
 }
 
 </script>
@@ -33,10 +53,11 @@ export default {
 
           > li {
               float: left;
-              padding-right: 10px;              
+              padding-right: 10px;
           
               > a, a:hover {
                   text-decoration: none;
+                  cursor: pointer;
               }                            
 
               > a::after {
@@ -51,6 +72,6 @@ export default {
               color: #808080;
           }
       }
-  }
+    }
 
 </style>
