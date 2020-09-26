@@ -4,27 +4,35 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-  {   
-    path: '/', 
-    redirect: '/list/databases'
+  {       
+    path: '/',
+    redirect: { name : 'ListDatabases' },
   },
-  {
-    path: '/list/:model',
-    name: 'List1',
-    component: () => import(/* webpackChunkName: "views" */ '../views/ListView.vue')
-  },
-  {
-    path: '/list/:model/:id',
-    name: 'List2',
-    component: () => import(/* webpackChunkName: "views" */ '../views/ListView.vue')
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "views" */ '../views/About.vue')
+  {       
+    path: '/list/databases',
+    name: 'ListDatabases',
+    props: {
+      model: 'database'
+    },
+    component: () => import(/* webpackChunkName: "views" */ '@/views/ListView.vue')      
+  },  
+  {       
+    path: '/list/database/:database',
+    name: 'ListDocuments',
+    props: {
+      model: 'document'
+    },
+    component: () => import(/* webpackChunkName: "views" */ '@/views/ListView.vue')      
+  },  
+  {       
+    path: '/edit/:database/:docid',
+    name: 'EditDocument',
+    props: {
+      model: 'document'
+    },
+    component: () => {      
+      return import(/* webpackChunkName: "views" */ '@/views/EditView.vue')    
+    }
   }
 ]
 

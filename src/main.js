@@ -3,12 +3,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import Api from './store/api'
-
-const api = new Api(router, store)
-
-Vue.prototype.$api = api
-
 Vue.config.productionTip = false
 
 new Vue({
@@ -16,3 +10,5 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
+Vue.component('DocumentEdit', () => import(/* webpackChunkName: "views" */'@/components/DocumentEdit'))

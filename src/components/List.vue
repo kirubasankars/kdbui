@@ -23,7 +23,7 @@
 
 export default {
   
-  name: "ListView",
+  name: "List",
   
   props: {
     'config': Object,

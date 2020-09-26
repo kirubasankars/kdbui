@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <TopNav />    
+    <TopNav />
+    <LoadingPanel/>
     <Controller />
   </div>
 </template>
@@ -9,12 +10,14 @@
 // @ is an alias to /src
 import TopNav from '@/components/TopNav.vue'
 import Controller from '@/components/Controller.vue'
+import LoadingPanel from '@/components/LoadingPanel.vue'
 
 export default {
   name: 'App',
   components: {
     TopNav,
-    Controller
+    Controller,
+    LoadingPanel
   }
 }
 </script>
@@ -195,7 +198,7 @@ html, body, #app {
 
                 .item {                                        
                     border-bottom: #b3b3b3 solid 1px;
-                    line-height: 28px;                                        
+                    line-height: 29px;                                        
 
                     input[type=checkbox] {                                                                        
                         vertical-align: middle;                                                                        
@@ -217,6 +220,11 @@ html, body, #app {
                 .item:hover {
                     background-color: #e6e6e6;
                 }
+            }
+
+            .CodeMirror {    
+                height: 100% !important;
+                font-size: 16px;
             }
         }
     }

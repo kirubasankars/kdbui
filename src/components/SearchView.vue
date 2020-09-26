@@ -14,7 +14,8 @@ export default {
 
 <style lang="scss" scoped>
 
-  .searchview {                    
+  .searchview {    
+      display: none;                
       height: 30px;
       width: 200px;
       line-height: 46px;                    

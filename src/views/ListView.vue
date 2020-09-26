@@ -1,5 +1,5 @@
-<template>  
-  <List v-bind:config="config" v-bind:rows="rows" />      
+<template>    
+  <component v-bind:is="view" v-bind:config="config" v-bind:rows="data"></component>
 </template>
 
 <script>
@@ -13,18 +13,26 @@ export default {
   components: {
     List
   },
-
+  props: {
+    model: String
+  },
   computed : {
-    rows() {
+    data() {
       return this.$store.state.list.data;
     },
     config() {
       return this.$store.state.list.config;
+    },
+    view() {
+      return this.config.view;
     }
   },
 
-  created() {    
-    this.$store.dispatch('LOAD_DATA', { view: 'list', model: this.$route.params.model, id: this.$route.params.id })
+  created() {        
+    let params = this.$route.params;
+    params.view = 'list';
+    params.model = this.model;
+    this.$store.dispatch('LOAD_DATA', params)
   }
   
 }

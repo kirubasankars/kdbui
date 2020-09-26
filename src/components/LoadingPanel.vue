@@ -1,5 +1,5 @@
 <template>
-  <div class="loading">
+  <div class="loading" v-bind:class="{ visible: show }">
       loading...
   </div>  
 </template>
@@ -7,7 +7,12 @@
 <script>
 
 export default {
-  name: 'LoadingPanel'  
+  name: 'LoadingPanel',
+  computed : {
+    show() {
+      return this.$store.state.loading;
+    }
+  },
 }
 
 </script>
