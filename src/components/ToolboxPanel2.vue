@@ -35,9 +35,10 @@ export default {
     }
   },
   methods: {
-    actionClick(item) {
-      if (item.action) {
-        item.action.apply(this)
+    actionClick(item) {      
+      let component = this.$parent.$parent.$children[1].$children[0].$children[0]
+      if (item.action) {        
+        item.action.apply(this, [component])
       }
     }
   }

@@ -29,8 +29,8 @@ export default {
                         {
                             "type": "button",
                             "text": "Create",                            
-                            "action" : function() {
-                                console.log(this.$store)
+                            "action" : function(view) {
+                                console.log(view)
                             }
                         }
                     ]
@@ -84,7 +84,10 @@ export default {
                     left : [
                         {
                             "text": "Save",
-                            "type": "button"
+                            "type": "button",                            
+                            "action" : function(view) {
+                                console.log(view.value)
+                            }
                         }
                     ]
                 },

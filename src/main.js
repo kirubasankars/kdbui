@@ -10,5 +10,3 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
-
-Vue.component('DocumentEdit', () => import(/* webpackChunkName: "views" */'@/components/DocumentEdit'))

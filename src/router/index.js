@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
+Vue.component('DocumentEdit', () => import(/* webpackChunkName: "views" */'@/components/DocumentEdit'))
+
 const routes = [
   {       
     path: '/',

@@ -1,6 +1,6 @@
 <template>    
   <div class="documentEdit">    
-    <codemirror :value="row" :options="cmOptions"/>
+    <codemirror v-model="value" :options="cmOptions"/>
   </div>
 </template>
 <script>
@@ -18,6 +18,7 @@ export default {
   },
   data: function() {
     return {
+      value: "{}",
       cmOptions: {
         tabSize: 4,
         mode: "application/ld+json",
@@ -27,13 +28,13 @@ export default {
       }
     }
   },
-  computed : {
-    row() {
-      return JSON.stringify(this.$store.state.edit.data, null, 4);
-    },
-    config() {
-      return this.$store.state.edit.config;
-    }
+  props: {
+    item: Object
+  },
+  watch: { 
+      item: function(nv) {
+        this.value = JSON.stringify(nv, null, 4)
+      }      
   }
 }
 
