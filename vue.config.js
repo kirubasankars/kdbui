@@ -19,6 +19,6 @@ module.exports = {
       }
     }
   },
-  publicPath: '/',
-  runtimeCompiler: true
+  runtimeCompiler: true,
+  productionSourceMap: false
 }

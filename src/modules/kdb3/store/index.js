@@ -42,9 +42,19 @@ export default {
             })
         },
         loadDocument( { commit }, params) {
+            if (params.id) {
+                commit('loading', true, { root: true})
+                return axios.get(`/api/${params.database}/${params.id}`).then(response => {                
+                    commit('loadDocument', response.data)                     
+                    commit('loading', false, { root: true})
+                })
+            }
+        },
+        createDocument( { commit, dispatch }, params) {            
             commit('loading', true, { root: true})
-            return axios.get(`/api/${params.database}/${params.id}`).then(response => {                
-                commit('loadDocument', response.data)                     
+            return axios.post(`/api/${params.database}`, params.doc).then((r) => {                
+                params.id = r.data._id
+                dispatch('loadDocument', params)
                 commit('loading', false, { root: true})
             })
         },

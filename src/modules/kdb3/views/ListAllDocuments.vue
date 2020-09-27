@@ -43,7 +43,8 @@ export default {
       this.$router.push({ name : 'kdb3.EditDocument', params: { database: db, id: row.id }})
     },
     createDocument() {
-      
+      const db = this.$route.params.database
+      this.$router.push({ name : 'kdb3.NewDocument', params: { database: db }})
     }
   },
   created() {
