@@ -29,11 +29,11 @@ export default {
     }
   },
   props: {
-    item: Object
+    datum: Object
   },
   watch: { 
-      item: function(nv) {
-        this.value = JSON.stringify(nv, null, 4)
+      datum: function(nv) {
+        this.value = JSON.stringify(nv, null, 2)
       }      
   }
 }

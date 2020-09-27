@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="item" v-for="row in rows" v-bind:key="row.id" v-on:click="itemClicked(row)">
+      <tr class="item" v-for="row in rows" v-bind:key="row.id" v-on:click="onItemClicked(row)">
         <td v-if="config.selectable">
           <input type="checkbox" class="chksel" />
         </td>
@@ -31,8 +31,8 @@ export default {
   },
 
   methods: {
-    itemClicked(row) {      
-      this.config.itemClicked.call(this, row);
+    onItemClicked(row) {      
+      this.$emit('onItemClicked', row)
     }
   }
 

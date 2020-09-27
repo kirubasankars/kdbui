@@ -35,10 +35,14 @@ export default {
     }
   },
   methods: {
-    actionClick(item) {      
-      let component = this.$parent.$parent.$children[1].$children[0].$children[0]
-      if (item.action) {        
-        item.action.apply(this, [component])
+    actionClick(item) {
+      if (item.action && item.action != "") {       
+        let component = this.$parent.$parent.$children[1].$children[0]
+        const seg = item.action.split(":")   
+        const method = seg[1]
+        if (component[method] != undefined) {
+          component[seg[1]].apply(component)
+        }
       }
     }
   }

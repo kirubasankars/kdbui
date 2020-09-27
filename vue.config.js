@@ -19,6 +19,6 @@ module.exports = {
       }
     }
   },
-  publicPath: '/_utils', 
+  publicPath: '/',
   runtimeCompiler: true
 }
