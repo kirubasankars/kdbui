@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+let prefix = process.env.NODE_ENV === 'production' ? '' : '/api';
+
 export default {    
     namespaced: true,
     state: {
@@ -21,7 +23,7 @@ export default {
     actions: {        
         loadDatabases({ commit }) {
             commit('loading', true, { root: true})
-            return axios.get('/api/_all_dbs').then(response => {
+            return axios.get(`${prefix}/_all_dbs`).then(response => {
                 const data = []
                 response.data.forEach(element => {
                     data.push({ id: element, items: [element] })
@@ -32,7 +34,7 @@ export default {
         },
         loadDocuments({ commit }, db) {
             commit('loading', true, { root: true})
-            return axios.get(`/api/${db}/_all_docs`).then(response => {
+            return axios.get(`${prefix}/${db}/_all_docs`).then(response => {
                 const data = []
                 response.data.rows.forEach(element => {
                     data.push({ id: element['id'], items: [element["key"], element["value"], element["id"]] })
@@ -44,7 +46,7 @@ export default {
         loadDocument( { commit }, params) {
             if (params.id) {
                 commit('loading', true, { root: true})
-                return axios.get(`/api/${params.database}/${params.id}`).then(response => {                
+                return axios.get(`${prefix}/${params.database}/${params.id}`).then(response => {                
                     commit('loadDocument', response.data)                     
                     commit('loading', false, { root: true})
                 })
@@ -52,7 +54,7 @@ export default {
         },
         createDocument( { commit, dispatch }, params) {            
             commit('loading', true, { root: true})
-            return axios.post(`/api/${params.database}`, params.doc).then((r) => {                
+            return axios.post(`${prefix}/${params.database}`, params.doc).then((r) => {                
                 params.id = r.data._id
                 dispatch('loadDocument', params)
                 commit('loading', false, { root: true})
@@ -60,7 +62,7 @@ export default {
         },
         updateDocument( { commit, dispatch }, params) {
             commit('loading', true, { root: true})
-            return axios.put(`/api/${params.database}/${params.id}`, params.doc).then(() => {                
+            return axios.put(`${prefix}/${params.database}/${params.id}`, params.doc).then(() => {                
                 dispatch('loadDocument', params)
                 commit('loading', false, { root: true})
             })

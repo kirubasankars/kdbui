@@ -1,10 +1,5 @@
-//const pathRewrite = {}
-//const basePath = process.env.NODE_ENV === 'production' ? '^/' : '^/api';
-
-//pathRewrite[basePath] = '/'
-// process.env.NODE_ENV === 'production' ? '/' :
-
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production' ? '/_utils' : '/',
   pluginOptions: {
     proxy: {
       enabled: true,
